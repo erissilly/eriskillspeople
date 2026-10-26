@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://7m54kdpl182p"]
+
+[ext_resource type="Script" uid="uid://cpt85rvkc7234" path="res://scripts/shake_camera.gd" id="1_fto0n"]
+
+[node name="ShakeCamera" type="Camera2D" unique_id=1657430846]
+script = ExtResource("1_fto0n")
+max_offset = Vector2(100, 200)

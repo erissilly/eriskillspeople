@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody2D
 
+@onready var camera: Camera2D = $"../ShakeCamera"
 @onready var music: AudioStreamPlayer = $"../music"
 @onready var jump: AudioStreamPlayer2D = $jump
 @onready var hit: AudioStreamPlayer2D = $hit
@@ -9,6 +10,7 @@ class_name Player extends CharacterBody2D
 @onready var right: RayCast2D = $right
 @onready var up: RayCast2D = $up
 @onready var down: RayCast2D = $down
+var facing_left:= false
 
 enum State { IDLE, WALKING, ATTACKING }
 var state := State.IDLE
@@ -18,10 +20,12 @@ const tile_size = 16
 
 func tile_move():
 	if state == State.IDLE:
-		spr.play("idle")
+		if facing_left:
+			spr.play("idle_flip")
+		else:
+			spr.play("idle")
 		var diry = int(Input.is_action_just_pressed("down")) - int(Input.is_action_just_pressed("up"))
 		var dirx = int(Input.is_action_just_pressed("right"))- int(Input.is_action_just_pressed("left"))
-		
 		
 		
 		if dirx == -1 && left.is_colliding():
@@ -37,7 +41,12 @@ func tile_move():
 		if dirx != 0:
 			state = State.WALKING
 			var dirgoto = position.x + dirx * tile_size
-			spr.play("walk")
+			if dirx == 1:
+				facing_left = false
+				spr.play("walk")
+			elif dirx == -1:
+				facing_left = true
+				spr.play("walk_flip")
 			jump.play()
 			var tween = create_tween()
 			spr.position.y -= 1
@@ -49,7 +58,12 @@ func tile_move():
 		elif diry != 0:
 			state = State.WALKING
 			var dirgoto = position.y + diry * tile_size
-			spr.play("walk")
+			if facing_left:
+				facing_left = true
+				spr.play("walk_flip")
+			elif !facing_left:
+				facing_left = false
+				spr.play("walk")
 			jump.play()
 			var tween = create_tween()
 			spr.position.y -= 1
@@ -72,9 +86,14 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 				await get_tree().physics_frame
 			music.stop()
 			state = State.ATTACKING
-			spr.play("attack")
+			if facing_left:
+				spr.play("attack_flip")
+			elif !facing_left:
+				spr.play("attack")
+				
 			await get_tree().create_timer(0.85).timeout
 			hit.play()
+			camera.add_trauma(0.2)
 			await spr.animation_finished
 			Global.attacked.emit(area)
 			await get_tree().create_timer(0.85).timeout

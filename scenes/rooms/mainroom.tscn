@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://migmr5hd5d15"]
 
 [ext_resource type="PackedScene" uid="uid://dktlvl4vgg47q" path="res://scenes/characters/player.tscn" id="1_lq3ot"]
+[ext_resource type="PackedScene" uid="uid://7m54kdpl182p" path="res://scenes/shake_camera.tscn" id="1_v4vmh"]
 [ext_resource type="Texture2D" uid="uid://g2blagmrh6po" path="res://sprites/tileshit.png" id="2_6020n"]
 [ext_resource type="PackedScene" uid="uid://e8e18ph5xp5i" path="res://scenes/characters/enemy.tscn" id="3_oshmy"]
 [ext_resource type="AudioStream" uid="uid://jj5lpn3cg6ju" path="res://sounds/happy.wav" id="4_d6n3p"]
@@ -17,6 +18,15 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_oshmy")
 
 [node name="main" type="Node2D" unique_id=129708476]
+
+[node name="ShakeCamera" parent="." unique_id=1657430846 instance=ExtResource("1_v4vmh")]
+anchor_mode = 0
+ignore_rotation = false
+limit_left = 0
+limit_top = 0
+limit_right = 0
+limit_bottom = 0
+target = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=985391588 instance=ExtResource("1_lq3ot")]
 position = Vector2(167, 85)
