@@ -3,11 +3,13 @@ class_name Enemy extends Area2D
 @onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var spr: AnimatedSprite2D = $AnimatedSprite2D
 @export var indexnr:= 1
+@export var fliphorizontal := false
 
 @onready var alive = true
 
 func _ready() -> void:
 	spr.play(str(indexnr))
+	spr.flip_h = fliphorizontal
 	Global.attacked.connect(_on_attacked)
 
 func _on_attacked(target: Enemy) -> void:
