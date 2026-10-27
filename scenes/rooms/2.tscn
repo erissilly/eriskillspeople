@@ -1,0 +1,82 @@
+[gd_scene format=4 uid="uid://x2xm87qa3swd"]
+
+[ext_resource type="Texture2D" uid="uid://g2blagmrh6po" path="res://sprites/tileshit.png" id="1_rvald"]
+[ext_resource type="PackedScene" uid="uid://e8e18ph5xp5i" path="res://scenes/characters/enemy.tscn" id="2_idby4"]
+[ext_resource type="PackedScene" uid="uid://dmp8w5kw84vhh" path="res://scenes/obstacle.tscn" id="3_hpd44"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rvald"]
+texture = ExtResource("1_rvald")
+0:1/0 = 0
+1:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:6/0 = 0
+2:6/0 = 0
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:2/0 = 0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_idby4"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_rvald")
+
+[node name="2" type="Node2D" unique_id=991760623]
+
+[node name="ground" type="TileMapLayer" parent="." unique_id=363215086]
+tile_map_data = PackedByteArray("AAAFAAMAAAACAAEAAAAFAAQAAAABAAAAAAAFAAUAAAABAAAAAAAFAAYAAAABAAAAAAAFAAcAAAACAAIAAAAGAAMAAAACAAAAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAEAAAAGAAcAAAAAAAEAAAAHAAMAAAACAAAAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAEAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAEAAAAIAAMAAAACAAAAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAJAAMAAAACAAAAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAcAAAAAAAEAAAAKAAMAAAACAAAAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAEAAAALAAMAAAACAAAAAAALAAQAAAAAAAEAAAALAAUAAAAAAAEAAAALAAYAAAAAAAEAAAALAAcAAAAAAAEAAAAMAAMAAAACAAAAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAMAAYAAAAAAAEAAAAMAAcAAAAAAAEAAAANAAMAAAACAAAAAAANAAQAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAANAAcAAAAAAAEAAAAOAAMAAAADAAEAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAADAAIAAAAGAAgAAAACAAIAAAAHAAgAAAADAAAAAAAIAAgAAAADAAAAAAAJAAgAAAAAAAEAAAAKAAgAAAAAAAEAAAALAAgAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAIAAAA=")
+tile_set = SubResource("TileSet_idby4")
+
+[node name="decoration" type="TileMapLayer" parent="." unique_id=1169051297]
+tile_set = SubResource("TileSet_idby4")
+
+[node name="walls" type="TileMapLayer" parent="." unique_id=813035118]
+tile_map_data = PackedByteArray("AAAFAAIAAAAGAAEAAAAGAAIAAAAGAAEAAAAHAAIAAAAGAAEAAAAIAAIAAAAGAAEAAAAJAAIAAAAGAAEAAAAKAAIAAAAGAAEAAAALAAIAAAAGAAEAAAAMAAIAAAAGAAEAAAANAAIAAAAGAAEAAAAOAAIAAAAGAAEAAAAPAAMAAAAGAAIAAAAPAAQAAAAGAAIAAAAPAAUAAAAGAAIAAAAPAAYAAAAGAAIAAAAPAAcAAAAGAAIAAAAOAAgAAAAHAAEAAAAOAAkAAAAIAAIAAAALAAkAAAAGAAEAAAAMAAkAAAAGAAEAAAANAAkAAAAGAAEAAAAEAAIAAAAHAAEAAAAEAAMAAAAGAAIAAAAEAAQAAAAGAAIAAAAEAAUAAAAGAAIAAAAEAAYAAAAGAAIAAAAEAAcAAAAGAAIAAAAPAAIAAAAIAAEAAAAIAAkAAAAGAAEAAAAHAAkAAAAGAAEAAAAGAAkAAAAGAAEAAAAFAAkAAAAHAAIAAAAFAAgAAAAIAAEAAAAEAAgAAAAHAAIAAAAPAAgAAAAIAAIAAAAJAAkAAAAGAAEAAAAKAAkAAAAGAAEAAAA=")
+tile_set = SubResource("TileSet_idby4")
+
+[node name="enemy2" parent="." unique_id=1708190912 instance=ExtResource("2_idby4")]
+position = Vector2(120, 70)
+fliphorizontal = true
+
+[node name="enemy" parent="." unique_id=757316757 instance=ExtResource("2_idby4")]
+position = Vector2(135, 70)
+
+[node name="obstacle" parent="." unique_id=1945565027 instance=ExtResource("3_hpd44")]
+position = Vector2(216, 88)

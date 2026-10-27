@@ -1,0 +1,83 @@
+[gd_scene format=4 uid="uid://da2jmktky147t"]
+
+[ext_resource type="Texture2D" uid="uid://g2blagmrh6po" path="res://sprites/tileshit.png" id="1_a1jo5"]
+[ext_resource type="PackedScene" uid="uid://e8e18ph5xp5i" path="res://scenes/characters/enemy.tscn" id="2_jujyk"]
+[ext_resource type="PackedScene" uid="uid://dmp8w5kw84vhh" path="res://scenes/obstacle.tscn" id="3_jujyk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3600"]
+texture = ExtResource("1_a1jo5")
+0:1/0 = 0
+1:1/0 = 0
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+2:2/0 = 0
+2:1/0 = 0
+1:2/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:6/0 = 0
+2:6/0 = 0
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:2/0 = 0
+7:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:2/0 = 0
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_pub68"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_p3600")
+
+[node name="1" type="Node2D" unique_id=858225962]
+
+[node name="ground" type="TileMapLayer" parent="." unique_id=2069760614]
+tile_map_data = PackedByteArray("AAAFAAMAAAACAAEAAAAFAAQAAAABAAAAAAAFAAUAAAABAAAAAAAFAAYAAAABAAAAAAAFAAcAAAACAAIAAAAGAAMAAAACAAAAAAAGAAQAAAAAAAEAAAAGAAUAAAAAAAEAAAAGAAYAAAAAAAEAAAAGAAcAAAAAAAEAAAAHAAMAAAACAAAAAAAHAAQAAAAAAAEAAAAHAAUAAAAAAAEAAAAHAAYAAAAAAAEAAAAHAAcAAAAAAAEAAAAIAAMAAAACAAAAAAAIAAQAAAAAAAEAAAAIAAUAAAAAAAEAAAAIAAYAAAAAAAEAAAAIAAcAAAAAAAEAAAAJAAMAAAACAAAAAAAJAAQAAAAAAAEAAAAJAAUAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAcAAAAAAAEAAAAKAAMAAAACAAAAAAAKAAQAAAAAAAEAAAAKAAUAAAAAAAEAAAAKAAYAAAAAAAEAAAAKAAcAAAAAAAEAAAALAAMAAAACAAAAAAALAAQAAAAAAAEAAAALAAUAAAAAAAEAAAALAAYAAAAAAAEAAAALAAcAAAAAAAEAAAAMAAMAAAACAAAAAAAMAAQAAAAAAAEAAAAMAAUAAAAAAAEAAAAMAAYAAAAAAAEAAAAMAAcAAAAAAAEAAAANAAMAAAACAAAAAAANAAQAAAAAAAEAAAANAAUAAAAAAAEAAAANAAYAAAAAAAEAAAANAAcAAAAAAAEAAAAOAAMAAAADAAEAAAAOAAQAAAAAAAAAAAAOAAUAAAAAAAAAAAAOAAYAAAAAAAAAAAAOAAcAAAADAAIAAAAGAAgAAAACAAIAAAAHAAgAAAADAAAAAAAIAAgAAAADAAAAAAAJAAgAAAAAAAEAAAAKAAgAAAAAAAEAAAALAAgAAAADAAAAAAAMAAgAAAADAAAAAAANAAgAAAADAAIAAAAKAAkAAAAAAAAAAAAKAAoAAAAAAAAAAAAJAAkAAAABAAAAAAAJAAoAAAABAAAAAAAJAAsAAAACAAIAAAAKAAsAAAADAAIAAAAIAAsAAAAGAAIAAAALAAsAAAAGAAIAAAA=")
+tile_set = SubResource("TileSet_pub68")
+
+[node name="decoration" type="TileMapLayer" parent="." unique_id=1039864515]
+tile_map_data = PackedByteArray("AAAKAAoAAAAEAAAAAAAJAAkAAAAEAAAAAAAGAAQAAAAEAAAAAAALAAQAAAAEAAAAAAAMAAgAAAAEAAAAAAAGAAgAAAAEAAAAAAA=")
+tile_set = SubResource("TileSet_pub68")
+
+[node name="walls" type="TileMapLayer" parent="." unique_id=713329340]
+tile_map_data = PackedByteArray("AAAFAAIAAAAGAAEAAAAGAAIAAAAGAAEAAAAHAAIAAAAGAAEAAAAIAAIAAAAGAAEAAAAJAAIAAAAGAAEAAAAKAAIAAAAGAAEAAAALAAIAAAAGAAEAAAAMAAIAAAAGAAEAAAANAAIAAAAGAAEAAAAOAAIAAAAGAAEAAAAPAAMAAAAGAAIAAAAPAAQAAAAGAAIAAAAPAAUAAAAGAAIAAAAPAAYAAAAGAAIAAAAPAAcAAAAGAAIAAAAOAAgAAAAHAAEAAAAOAAkAAAAIAAIAAAALAAkAAAAHAAEAAAAMAAkAAAAGAAEAAAANAAkAAAAGAAEAAAAEAAIAAAAHAAEAAAAEAAMAAAAGAAIAAAAEAAQAAAAGAAIAAAAEAAUAAAAGAAIAAAAEAAYAAAAGAAIAAAAEAAcAAAAGAAIAAAAPAAIAAAAIAAEAAAALAAoAAAAGAAIAAAAIAAoAAAAGAAIAAAAIAAkAAAAIAAEAAAAHAAkAAAAGAAEAAAAGAAkAAAAGAAEAAAAFAAkAAAAHAAIAAAAFAAgAAAAIAAEAAAAEAAgAAAAHAAIAAAAPAAgAAAAIAAIAAAA=")
+tile_set = SubResource("TileSet_pub68")
+
+[node name="enemy2" parent="." unique_id=1708190912 instance=ExtResource("2_jujyk")]
+position = Vector2(120, 100)
+fliphorizontal = true
+
+[node name="enemy" parent="." unique_id=60110550 instance=ExtResource("2_jujyk")]
+position = Vector2(232, 50)
+
+[node name="obstacle" parent="." unique_id=281609377 instance=ExtResource("3_jujyk")]
+position = Vector2(216, 88)

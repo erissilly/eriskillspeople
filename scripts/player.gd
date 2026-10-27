@@ -4,19 +4,26 @@ class_name Player extends CharacterBody2D
 @onready var music: AudioStreamPlayer = $"../music"
 @onready var jump: AudioStreamPlayer2D = $jump
 @onready var hit: AudioStreamPlayer2D = $hit
-@onready var timer: Timer = $TILEWAIT
+@onready var dead: AudioStreamPlayer2D = $dead
 @onready var spr: AnimatedSprite2D = $AnimatedSprite2D
 @onready var left: RayCast2D = $left
 @onready var right: RayCast2D = $right
 @onready var up: RayCast2D = $up
 @onready var down: RayCast2D = $down
+@onready var alive = true
+
+
 var facing_left:= false
 
-enum State { IDLE, WALKING, ATTACKING }
+enum State { IDLE, WALKING, ATTACKING, DEAD }
 var state := State.IDLE
 
 const tile_size = 16
 
+func _ready() -> void:
+	Global.player = self
+	for ray in [left,right,up,down]:
+		ray.add_exception($attackarea)
 
 func tile_move():
 	if state == State.IDLE:
@@ -27,15 +34,28 @@ func tile_move():
 		var diry = int(Input.is_action_just_pressed("down")) - int(Input.is_action_just_pressed("up"))
 		var dirx = int(Input.is_action_just_pressed("right"))- int(Input.is_action_just_pressed("left"))
 		
-		
 		if dirx == -1 && left.is_colliding():
-			return
+			if left.get_collider().is_in_group("enemy"):
+				facing_left = true
+				_on_attackarea_area_entered(left.get_collider())
+			if not (left.get_collider() is Obstacle):
+				return
 		elif dirx == 1 && right.is_colliding():
-			return
+			if right.get_collider().is_in_group("enemy"):
+				facing_left = false
+				_on_attackarea_area_entered(right.get_collider())
+			if not (right.get_collider() is Obstacle):
+				return
 		elif diry == -1 && up.is_colliding():
-			return
+			if up.get_collider().is_in_group("enemy"):
+				_on_attackarea_area_entered(up.get_collider())
+			if not (up.get_collider() is Obstacle):
+				return
 		elif diry == 1 && down.is_colliding():
-			return
+			if down.get_collider().is_in_group("enemy"):
+				_on_attackarea_area_entered(down.get_collider())
+			if not (down.get_collider() is Obstacle):
+				return
 			
 			
 		if dirx != 0:
@@ -73,7 +93,6 @@ func tile_move():
 			state = State.IDLE
 		
 		
-@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	tile_move()
 
@@ -85,9 +104,9 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 		if checkifdead:
 			while state != State.IDLE:
 				await get_tree().physics_frame
-			music.stop()
+			music.stream_paused = true
 			state = State.ATTACKING
-			camera.zoom_in(0.2,Vector2(2,2))
+			camera.zoom_in(0.1,Vector2(2,2))
 			if facing_left:
 				spr.play("attack_flip")
 			elif !facing_left:
@@ -98,5 +117,29 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 			await spr.animation_finished
 			Global.attacked.emit(area)
 			await get_tree().create_timer(0.85).timeout
-			music.play()
+			music.stream_paused = false
+			var count = get_tree().get_nodes_in_group("enemy").size()
+			if Global.enemydead == count:
+				Global.level += 1
+				Global.enemydead = 0
+				await get_tree().create_timer(0.2).timeout
+				SceneTransition.change_scene_file()
 			state = State.IDLE
+			
+
+	elif area is Obstacle:
+		while state != State.IDLE:
+				await get_tree().physics_frame
+		state = State.DEAD
+		dead.play()
+		camera.add_trauma(0.2)
+		music.stop()
+		if facing_left:
+			spr.play("dead_flip")
+		elif !facing_left:
+			spr.play("dead")
+		await get_tree().create_timer(2).timeout
+		Global.enemydead = 0
+		SceneTransition.change_scene_file()
+		
+	

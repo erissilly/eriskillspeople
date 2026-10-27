@@ -1,23 +1,15 @@
-[gd_scene format=4 uid="uid://migmr5hd5d15"]
+[gd_scene format=3 uid="uid://migmr5hd5d15"]
 
 [ext_resource type="PackedScene" uid="uid://dktlvl4vgg47q" path="res://scenes/characters/player.tscn" id="1_lq3ot"]
+[ext_resource type="Script" uid="uid://byc27q56m8xn4" path="res://scripts/mainroom.gd" id="1_lw2v3"]
 [ext_resource type="PackedScene" uid="uid://7m54kdpl182p" path="res://scenes/shake_camera.tscn" id="1_v4vmh"]
-[ext_resource type="Texture2D" uid="uid://g2blagmrh6po" path="res://sprites/tileshit.png" id="2_6020n"]
-[ext_resource type="PackedScene" uid="uid://e8e18ph5xp5i" path="res://scenes/characters/enemy.tscn" id="3_oshmy"]
+[ext_resource type="PackedScene" uid="uid://dw12k0vpiep1k" path="res://scenes/scene_transition.tscn" id="2_v4vmh"]
 [ext_resource type="AudioStream" uid="uid://jj5lpn3cg6ju" path="res://sounds/happy.wav" id="4_d6n3p"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oshmy"]
-texture = ExtResource("2_6020n")
-0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-1:1/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_lq3ot"]
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_oshmy")
-
 [node name="main" type="Node2D" unique_id=129708476]
+script = ExtResource("1_lw2v3")
+
+[node name="SceneTransition" parent="." unique_id=2075772202 instance=ExtResource("2_v4vmh")]
 
 [node name="ShakeCamera" parent="." unique_id=1657430846 instance=ExtResource("1_v4vmh")]
 position = Vector2(160, 90)
@@ -33,18 +25,14 @@ target = NodePath("../Player")
 position = Vector2(167, 85)
 metadata/_edit_group_ = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1220675435]
-tile_map_data = PackedByteArray("AAAFAAMAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAFAAYAAAABAAEAAAAFAAcAAAABAAEAAAAGAAMAAAABAAEAAAAGAAQAAAABAAEAAAAGAAUAAAABAAEAAAAGAAYAAAABAAEAAAAGAAcAAAABAAEAAAAHAAMAAAABAAEAAAAHAAQAAAABAAEAAAAHAAUAAAABAAEAAAAHAAYAAAABAAEAAAAHAAcAAAABAAEAAAAIAAMAAAABAAEAAAAIAAQAAAABAAEAAAAIAAUAAAABAAEAAAAIAAYAAAABAAEAAAAIAAcAAAABAAEAAAAJAAMAAAABAAEAAAAJAAQAAAABAAEAAAAJAAUAAAABAAEAAAAJAAYAAAABAAEAAAAJAAcAAAABAAEAAAAKAAMAAAABAAEAAAAKAAQAAAABAAEAAAAKAAUAAAABAAEAAAAKAAYAAAABAAEAAAAKAAcAAAABAAEAAAALAAMAAAABAAEAAAALAAQAAAABAAEAAAALAAUAAAABAAEAAAALAAYAAAABAAEAAAALAAcAAAABAAEAAAAMAAMAAAABAAEAAAAMAAQAAAABAAEAAAAMAAUAAAABAAEAAAAMAAYAAAABAAEAAAAMAAcAAAABAAEAAAANAAMAAAABAAEAAAANAAQAAAABAAEAAAANAAUAAAABAAEAAAANAAYAAAABAAEAAAANAAcAAAABAAEAAAAOAAMAAAABAAEAAAAOAAQAAAABAAEAAAAOAAUAAAABAAEAAAAOAAYAAAABAAEAAAAOAAcAAAABAAEAAAAFAAIAAAAAAAEAAAAGAAIAAAAAAAEAAAAHAAIAAAAAAAEAAAAIAAIAAAAAAAEAAAAJAAIAAAAAAAEAAAAKAAIAAAAAAAEAAAALAAIAAAAAAAEAAAAMAAIAAAAAAAEAAAANAAIAAAAAAAEAAAAOAAIAAAAAAAEAAAAPAAMAAAAAAAEAAAAPAAQAAAAAAAEAAAAPAAUAAAAAAAEAAAAPAAYAAAAAAAEAAAAPAAcAAAAAAAEAAAAOAAgAAAAAAAEAAAAOAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAGAAgAAAAAAAEAAAAFAAgAAAAAAAEAAAAEAAIAAAAAAAEAAAAEAAMAAAAAAAEAAAAEAAQAAAAAAAEAAAAEAAUAAAAAAAEAAAAEAAYAAAAAAAEAAAAEAAcAAAAAAAEAAAAEAAgAAAAAAAEAAAAHAAgAAAABAAEAAAAIAAgAAAABAAEAAAAJAAgAAAABAAEAAAAKAAgAAAABAAEAAAALAAgAAAABAAEAAAAMAAgAAAABAAEAAAANAAgAAAABAAEAAAA=")
-tile_set = SubResource("TileSet_lq3ot")
-
-[node name="enemy2" parent="." unique_id=1708190912 instance=ExtResource("3_oshmy")]
-position = Vector2(120, 48)
-fliphorizontal = true
-
-[node name="enemy" parent="." unique_id=679383238 instance=ExtResource("3_oshmy")]
-position = Vector2(232, 48)
-
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=302908616]
 stream = ExtResource("4_d6n3p")
 volume_db = -15.0
 autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=822728889]
+offset_left = -145.0
+offset_top = -144.0
+offset_right = 480.0
+offset_bottom = 302.0
+color = Color(0, 0, 0, 1)

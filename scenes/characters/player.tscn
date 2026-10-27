@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://be0sd8scbonfj" path="res://sprites/eris-Sheet.png" id="1_rp718"]
 [ext_resource type="Script" uid="uid://b5751w7sangqs" path="res://scripts/player.gd" id="1_yewv4"]
 [ext_resource type="AudioStream" uid="uid://biv0w06rc83tr" path="res://sounds/hit.wav" id="3_76oj4"]
+[ext_resource type="AudioStream" uid="uid://dqo1j7v8u4mme" path="res://sounds/dead.wav" id="3_atpat"]
 [ext_resource type="AudioStream" uid="uid://q1dpr8fulbc1" path="res://sounds/jump.wav" id="3_dyp2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rp718"]
@@ -63,6 +64,14 @@ region = Rect2(80, 48, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5jukt"]
 atlas = ExtResource("1_rp718")
 region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwwfy"]
+atlas = ExtResource("1_rp718")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg40j"]
+atlas = ExtResource("1_rp718")
+region = Rect2(32, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yewv4"]
 atlas = ExtResource("1_rp718")
@@ -212,6 +221,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_vwwfy")
+}],
+"loop": 1,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg40j")
+}],
+"loop": 1,
+"name": &"dead_flip",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yewv4")
 }, {
 "duration": 1.0,
@@ -297,7 +322,7 @@ shape = SubResource("RectangleShape2D_rp718")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1381193870]
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"attack_flip"
+animation = &"dead_flip"
 autoplay = "idle"
 
 [node name="left" type="RayCast2D" parent="." unique_id=1731859241]
@@ -305,24 +330,28 @@ position = Vector2(-8, 0)
 target_position = Vector2(-8, 0)
 collision_mask = 6
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="right" type="RayCast2D" parent="." unique_id=249537097]
 position = Vector2(8, 0)
 target_position = Vector2(8, 0)
 collision_mask = 6
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="up" type="RayCast2D" parent="." unique_id=1395094376]
 position = Vector2(0, -8)
 target_position = Vector2(0, -8)
 collision_mask = 6
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="down" type="RayCast2D" parent="." unique_id=1863972742]
 position = Vector2(0, 8)
 target_position = Vector2(0, 8)
 collision_mask = 6
 hit_from_inside = true
+collide_with_areas = true
 
 [node name="attackarea" type="Area2D" parent="." unique_id=36604045]
 collision_layer = 4
@@ -331,6 +360,10 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attackarea" unique_id=267611605]
 shape = SubResource("RectangleShape2D_g4v7s")
 debug_color = Color(0.9878606, 0, 0.31348816, 0.41960785)
+
+[node name="dead" type="AudioStreamPlayer2D" parent="." unique_id=1436713112]
+stream = ExtResource("3_atpat")
+volume_db = 5.0
 
 [node name="jump" type="AudioStreamPlayer2D" parent="." unique_id=307640168]
 stream = ExtResource("3_dyp2m")

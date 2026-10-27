@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dmp8w5kw84vhh"]
+
+[ext_resource type="Texture2D" uid="uid://bkl1k1806ho7l" path="res://icon.svg" id="1_7ukg5"]
+[ext_resource type="Script" uid="uid://dyvjx4svafefd" path="res://scripts/obstacle.gd" id="1_drdry"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jb55"]
+size = Vector2(4, 2.5)
+
+[node name="obstacle" type="Area2D" unique_id=1708190912]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_drdry")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=526892946]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_7ukg5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156661193]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_7jb55")
