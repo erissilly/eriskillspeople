@@ -4,23 +4,29 @@ extends Camera2D
 @export var max_offset = Vector2(100,75)
 @export var max_roll = 0.1
 @export var target: NodePath
+@onready var player: Player = $"../Player"
 
 var trauma = 0.0
 var trauma_power = 2
-
-func _ready() -> void:
-	randomize()
 	
 func add_trauma(amount : float) -> void:
 	trauma = min(trauma + amount, 1.0)
 
 func _process(delta: float) -> void:
-	if target:
-		global_position = get_node(target).global_position
 	if trauma:
 		trauma = max(trauma - decay * delta, 0)
 		shake()
-		
+
+func zoom_in(timetozoom: float, howmuchzoom: Vector2) -> void:
+		var tween = get_tree().create_tween()
+		var originalcamerapos = position 
+		position = get_node(target).position - Vector2(0,-5)
+		tween.tween_property(self, "zoom", howmuchzoom, timetozoom)
+		await tween.finished
+		await get_tree().create_timer(2).timeout
+		position = originalcamerapos
+		zoom = Vector2.ONE
+
 func shake():
 	var amount = pow(trauma,trauma_power)
 	rotation = max_roll * amount * randf_range(-1,1)

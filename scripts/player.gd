@@ -73,6 +73,7 @@ func tile_move():
 			state = State.IDLE
 		
 		
+@warning_ignore("unused_parameter")
 func _physics_process(delta: float) -> void:
 	tile_move()
 
@@ -86,11 +87,11 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 				await get_tree().physics_frame
 			music.stop()
 			state = State.ATTACKING
+			camera.zoom_in(0.2,Vector2(2,2))
 			if facing_left:
 				spr.play("attack_flip")
 			elif !facing_left:
 				spr.play("attack")
-				
 			await get_tree().create_timer(0.85).timeout
 			hit.play()
 			camera.add_trauma(0.2)
