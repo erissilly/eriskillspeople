@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://chichbgcapjao"]
+
+[ext_resource type="FontFile" uid="uid://bupy1yocj8axm" path="res://sprites/fonts/Boiled Pasta.ttf" id="1_eo4yk"]
+[ext_resource type="Texture2D" uid="uid://ckl3xkvspaq0k" path="res://sprites/menu_texture.png" id="1_xjywm"]
+[ext_resource type="Texture2D" uid="uid://2eoii31p8lgx" path="res://sprites/button_idle.png" id="2_xjywm"]
+[ext_resource type="Texture2D" uid="uid://d2g7n2wp0fuqy" path="res://sprites/button_focus.png" id="3_wxavg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tgrdi"]
+texture = ExtResource("2_xjywm")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k67oq"]
+texture = ExtResource("3_wxavg")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+
+[node name="Confirm" type="Control" unique_id=1436116549]
+z_index = 101
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=520071624]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.5
+offset_top = -12.0
+offset_right = 43.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1473147550]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1828807735]
+layout_mode = 2
+theme_override_constants/margin_left = -5
+theme_override_constants/margin_top = -5
+theme_override_constants/margin_right = -5
+theme_override_constants/margin_bottom = -5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/PanelContainer/MarginContainer2" unique_id=569819568]
+layout_mode = 2
+texture = ExtResource("1_xjywm")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=13241893]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=2067204915]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_eo4yk")
+text = "Starting a new game
+will remove all of your progress
+Proceed?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=47015879]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="yes" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=163048741]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("1_eo4yk")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_tgrdi")
+theme_override_styles/focus = SubResource("StyleBoxTexture_k67oq")
+text = "yes"
+
+[node name="no" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=2129465025]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("1_eo4yk")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_tgrdi")
+theme_override_styles/focus = SubResource("StyleBoxTexture_k67oq")
+text = "no"
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1583167676]
+layout_mode = 2

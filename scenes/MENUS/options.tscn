@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://byhhh5flme1of"]
+
+[ext_resource type="Script" uid="uid://cntsiwhb4rrfi" path="res://scenes/MENUS/options.gd" id="1_3kjdj"]
+
+[node name="Options" type="Control" unique_id=1728046914]
+z_index = 100
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3kjdj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1468149120]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.38039216)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2108412186]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -66.5
+offset_top = -73.5
+offset_right = 66.5
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1332500722]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=937937930]
+layout_mode = 2
+text = "Options"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=421037889]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1575715510]
+layout_mode = 2
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1865156615]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1661038502]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=322997422]
+layout_mode = 2
+text = "Sound"
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=442336741]
+layout_mode = 2
+
+[node name="fullscreen" type="CheckButton" parent="CenterContainer/VBoxContainer" unique_id=1706735160]
+layout_mode = 2
+mouse_filter = 2
+button_pressed = true
+text = "Full Screen"
+
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer" unique_id=594184684]
+layout_mode = 2
+mouse_filter = 2
+text = "Back"
+
+[node name="Backtomenu" type="Button" parent="CenterContainer/VBoxContainer" unique_id=427822324]
+layout_mode = 2
+mouse_filter = 2
+text = "Back to Menu"
+
+[connection signal="toggled" from="CenterContainer/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Backtomenu" to="." method="_on_backtomenu_pressed"]

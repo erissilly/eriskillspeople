@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://cuce8haicaia8"]
+
+[ext_resource type="Script" uid="uid://5c8s8tqr2xou" path="res://scenes/MENUS/main_menu.gd" id="1_7n4b7"]
+[ext_resource type="Texture2D" uid="uid://2eoii31p8lgx" path="res://sprites/button_idle.png" id="3_07dwu"]
+[ext_resource type="FontFile" uid="uid://bupy1yocj8axm" path="res://sprites/fonts/Boiled Pasta.ttf" id="5_07dwu"]
+[ext_resource type="Texture2D" uid="uid://d2g7n2wp0fuqy" path="res://sprites/button_focus.png" id="5_qlpph"]
+[ext_resource type="PackedScene" uid="uid://byhhh5flme1of" path="res://scenes/MENUS/options.tscn" id="5_vj38n"]
+[ext_resource type="PackedScene" uid="uid://chichbgcapjao" path="res://scenes/MENUS/confirm.tscn" id="6_qlpph"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_07dwu"]
+texture = ExtResource("3_07dwu")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0pnms"]
+texture = ExtResource("5_qlpph")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+
+[node name="MainMenu" type="Control" unique_id=755932864]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7n4b7")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1749338218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=258279898]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1335088727]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Start" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1207532712]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("5_07dwu")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_07dwu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0pnms")
+text = "new game"
+
+[node name="Continue" type="Button" parent="MarginContainer/HBoxContainer" unique_id=1386033815]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("5_07dwu")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_07dwu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0pnms")
+text = "continue"
+
+[node name="Options" type="Button" parent="MarginContainer/HBoxContainer" unique_id=603473582]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("5_07dwu")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_07dwu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0pnms")
+text = "options"
+
+[node name="Quit" type="Button" parent="MarginContainer/HBoxContainer" unique_id=663773885]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("5_07dwu")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxTexture_07dwu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_0pnms")
+text = "quit"
+
+[node name="Options" parent="." unique_id=1728046914 instance=ExtResource("5_vj38n")]
+layout_mode = 1
+
+[node name="Confirm" parent="." unique_id=1436116549 instance=ExtResource("6_qlpph")]
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Options" to="." method="_on_options_pressed"]

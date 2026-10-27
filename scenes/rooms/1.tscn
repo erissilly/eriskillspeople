@@ -74,6 +74,7 @@ tile_set = SubResource("TileSet_pub68")
 
 [node name="enemy2" parent="." unique_id=1708190912 instance=ExtResource("2_jujyk")]
 position = Vector2(120, 100)
+indexnr = 2
 fliphorizontal = true
 
 [node name="enemy" parent="." unique_id=60110550 instance=ExtResource("2_jujyk")]
