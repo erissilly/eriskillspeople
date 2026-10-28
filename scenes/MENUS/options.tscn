@@ -1,6 +1,41 @@
 [gd_scene format=3 uid="uid://byhhh5flme1of"]
 
 [ext_resource type="Script" uid="uid://cntsiwhb4rrfi" path="res://scenes/MENUS/options.gd" id="1_3kjdj"]
+[ext_resource type="FontFile" uid="uid://bupy1yocj8axm" path="res://sprites/fonts/Boiled Pasta.ttf" id="2_ch1jd"]
+[ext_resource type="Texture2D" uid="uid://ckl3xkvspaq0k" path="res://sprites/menu_texture.png" id="2_f1k6j"]
+[ext_resource type="Texture2D" uid="uid://cjd2kcymluvcd" path="res://sprites/buttonthing.png" id="3_eyocj"]
+[ext_resource type="Texture2D" uid="uid://tl8ous6bxlrp" path="res://sprites/buttonthing_turnon.png" id="5_hw5j8"]
+[ext_resource type="Texture2D" uid="uid://cmw6ef7a5imfn" path="res://sprites/buttonthing_turnoff.png" id="6_1klad"]
+[ext_resource type="Texture2D" uid="uid://2eoii31p8lgx" path="res://sprites/button_idle.png" id="7_1klad"]
+[ext_resource type="Texture2D" uid="uid://d2g7n2wp0fuqy" path="res://sprites/button_focus.png" id="8_tlrhs"]
+[ext_resource type="AudioStream" uid="uid://q1dpr8fulbc1" path="res://sounds/jump.wav" id="9_m8i8p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ch1jd"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tlrhs"]
+texture = ExtResource("7_1klad")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m8i8p"]
+texture = ExtResource("8_tlrhs")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 3.0
 
 [node name="Options" type="Control" unique_id=1728046914]
 z_index = 100
@@ -19,66 +54,157 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.38039216)
+color = Color(0, 0, 0, 0.4509804)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2108412186]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=901963316]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -66.5
-offset_top = -73.5
-offset_right = 66.5
-offset_bottom = 73.5
+offset_left = -78.5
+offset_top = -90.0
+offset_right = 78.5
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_f1k6j")
+region_rect = Rect2(0, 0, 15, 15)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="CenterContainer" type="AspectRatioContainer" parent="." unique_id=1441330122]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.5
+offset_top = -95.0
+offset_right = 73.5
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1332500722]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=937937930]
-layout_mode = 2
-text = "Options"
-horizontal_alignment = 1
+offset_transform_scale = Vector2(0.5, 0.5)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=421037889]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1575715510]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ch1jd")
 text = "Music"
+horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer" unique_id=1865156615]
+[node name="MusicSlider" type="HSlider" parent="CenterContainer/VBoxContainer" unique_id=1865156615]
 layout_mode = 2
 mouse_filter = 2
+theme_override_icons/grabber = ExtResource("3_eyocj")
+theme_override_icons/grabber_highlight = ExtResource("3_eyocj")
+theme_override_icons/grabber_disabled = ExtResource("3_eyocj")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ch1jd")
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 11
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1661038502]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=322997422]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ch1jd")
 text = "Sound"
+horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="CenterContainer/VBoxContainer/HBoxContainer2" unique_id=442336741]
+[node name="SoundSlider" type="HSlider" parent="CenterContainer/VBoxContainer" unique_id=442336741]
 layout_mode = 2
+mouse_filter = 2
+theme_override_icons/grabber = ExtResource("3_eyocj")
+theme_override_icons/grabber_highlight = ExtResource("3_eyocj")
+theme_override_icons/grabber_disabled = ExtResource("3_eyocj")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ch1jd")
+max_value = 1.0
+step = 0.1
+value = 1.0
+tick_count = 11
 
 [node name="fullscreen" type="CheckButton" parent="CenterContainer/VBoxContainer" unique_id=1706735160]
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("2_ch1jd")
+theme_override_styles/focus = SubResource("StyleBoxTexture_tlrhs")
+theme_override_icons/checked = ExtResource("5_hw5j8")
+theme_override_icons/unchecked = ExtResource("6_1klad")
+theme_override_icons/checked_disabled = ExtResource("5_hw5j8")
+theme_override_icons/unchecked_disabled = ExtResource("6_1klad")
+theme_override_icons/checked_mirrored = ExtResource("6_1klad")
+theme_override_icons/unchecked_mirrored = ExtResource("5_hw5j8")
+theme_override_icons/checked_disabled_mirrored = ExtResource("6_1klad")
+theme_override_icons/unchecked_disabled_mirrored = ExtResource("5_hw5j8")
 button_pressed = true
 text = "Full Screen"
 
-[node name="Back" type="Button" parent="CenterContainer/VBoxContainer" unique_id=594184684]
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/VBoxContainer" unique_id=720919665]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MarginContainer" unique_id=1550926102]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Backtomenu" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=427822324]
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("2_ch1jd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tlrhs")
+theme_override_styles/focus = SubResource("StyleBoxTexture_m8i8p")
+text = "Quit to Menu"
+
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=594184684]
+layout_mode = 2
+offset_transform_enabled = true
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.7529412, 0.67058825, 0.7529412, 1)
+theme_override_fonts/font = ExtResource("2_ch1jd")
+theme_override_styles/normal = SubResource("StyleBoxTexture_tlrhs")
+theme_override_styles/focus = SubResource("StyleBoxTexture_m8i8p")
 text = "Back"
 
-[node name="Backtomenu" type="Button" parent="CenterContainer/VBoxContainer" unique_id=427822324]
-layout_mode = 2
-mouse_filter = 2
-text = "Back to Menu"
+[node name="Preview_SFX" type="AudioStreamPlayer" parent="." unique_id=1576990738]
+stream = ExtResource("9_m8i8p")
+bus = &"SFX"
 
+[node name="Preview_BGM" type="AudioStreamPlayer" parent="." unique_id=1553804371]
+stream = ExtResource("9_m8i8p")
+bus = &"BGM"
+
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/SoundSlider" to="." method="_on_sound_slider_value_changed"]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Backtomenu" to="." method="_on_backtomenu_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/Backtomenu" to="." method="_on_backtomenu_pressed"]

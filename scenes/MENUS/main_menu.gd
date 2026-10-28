@@ -1,5 +1,6 @@
 extends Control
 
+
 @onready var start: Button = $MarginContainer/HBoxContainer/Start
 @onready var options: Control = $Options
 @onready var confirm: Control = $Confirm
@@ -31,6 +32,7 @@ func _ready():
 
 func _on_options_closed():
 	main_menu_buttons.show()
+
 	last_button.grab_focus.call_deferred()
 
 
@@ -67,3 +69,8 @@ func _on_options_pressed() -> void:
 	options.visible = true
 	main_menu_buttons.visible= false
 	
+	
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

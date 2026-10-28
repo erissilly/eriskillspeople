@@ -2,11 +2,25 @@ extends Control
 
 signal option_close
 
-@onready var back: Button = $CenterContainer/VBoxContainer/Back
-@onready var backtomenu: Button = $CenterContainer/VBoxContainer/Backtomenu
+@onready var MusicSlider: HSlider = $CenterContainer/VBoxContainer/MusicSlider
+@onready var SoundSlider: HSlider = $CenterContainer/VBoxContainer/SoundSlider
+@onready var back: Button = $CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/Back
 @onready var fullscreen: CheckButton = $CenterContainer/VBoxContainer/fullscreen
+@onready var backtomenu: Button = $CenterContainer/VBoxContainer/MarginContainer/VBoxContainer/Backtomenu
+@onready var preview_sfx: AudioStreamPlayer = $Preview_SFX
+@onready var preview_bgm: AudioStreamPlayer = $Preview_BGM
+
+var bgmindex = AudioServer.get_bus_index("BGM")
+var sfxindex = AudioServer.get_bus_index("SFX")
 
 func _ready() -> void:
+	if get_parent().name == "MainMenu":
+		backtomenu.hide()
+	else:
+		backtomenu.show()
+	MusicSlider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(bgmindex)))
+	SoundSlider.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(sfxindex)))
+	fullscreen.set_pressed_no_signal(DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	back.pressed.connect(stupidoptionstartfix)
 	visibility_changed.connect(_on_visibility_changed)
@@ -16,8 +30,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		if visible == true:
 			hide()
 			option_close.emit()
-		else:
-			visible = !visible
+		elif Global.can_open_options and not SceneTransition.tp:
+			show()
 		
 func stupidoptionstartfix():
 	hide()
@@ -51,3 +65,17 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		ProjectSettings.get_setting("display/window/size/viewport_width"),
 		ProjectSettings.get_setting("display/window/size/viewport_height"))
 		DisplayServer.window_set_size(base * 3)
+
+
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	preview_bgm.volume_db = linear_to_db(value)
+	preview_bgm.play()
+	AudioServer.set_bus_volume_db(bgmindex, linear_to_db(value))
+
+
+func _on_sound_slider_value_changed(value: float) -> void:
+	preview_sfx.volume_db = linear_to_db(value)
+	preview_sfx.play()
+	AudioServer.set_bus_volume_db(sfxindex, linear_to_db(value))

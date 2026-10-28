@@ -30,6 +30,7 @@ metadata/_edit_group_ = true
 stream = ExtResource("4_d6n3p")
 volume_db = -15.0
 autoplay = true
+bus = &"BGM"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=822728889]
 offset_left = -145.0

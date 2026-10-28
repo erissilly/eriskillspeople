@@ -104,6 +104,7 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 		if checkifdead:
 			while state != State.IDLE:
 				await get_tree().physics_frame
+			Global.can_open_options = false
 			music.stream_paused = true
 			state = State.ATTACKING
 			camera.zoom_in(0.1,Vector2(2,2))
@@ -124,10 +125,12 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 				Global.enemydead = 0
 				await get_tree().create_timer(0.2).timeout
 				SceneTransition.change_scene_file()
+			Global.can_open_options = true
 			state = State.IDLE
 			
 
 	elif area is Obstacle:
+		Global.can_open_options = false
 		while state != State.IDLE:
 				await get_tree().physics_frame
 		state = State.DEAD
@@ -141,5 +144,6 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 		await get_tree().create_timer(2).timeout
 		Global.enemydead = 0
 		SceneTransition.change_scene_file()
+		Global.can_open_options = true
 		
 	

@@ -364,13 +364,16 @@ debug_color = Color(0.9878606, 0, 0.31348816, 0.41960785)
 [node name="dead" type="AudioStreamPlayer2D" parent="." unique_id=1436713112]
 stream = ExtResource("3_atpat")
 volume_db = 5.0
+bus = &"SFX"
 
 [node name="jump" type="AudioStreamPlayer2D" parent="." unique_id=307640168]
 stream = ExtResource("3_dyp2m")
 volume_db = -5.0
 pitch_scale = 2.0
+bus = &"SFX"
 
 [node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=425848917]
 stream = ExtResource("3_76oj4")
+bus = &"SFX"
 
 [connection signal="area_entered" from="attackarea" to="." method="_on_attackarea_area_entered"]

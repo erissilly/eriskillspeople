@@ -158,6 +158,7 @@ debug_color = Color(0.5818863, 0.54172844, 0, 0.41960785)
 [node name="squeek" type="AudioStreamPlayer2D" parent="." unique_id=385319188]
 stream = ExtResource("3_f2e6v")
 volume_db = -5.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="checkifplayernear" to="." method="_on_checkifplayernear_body_entered"]
 [connection signal="body_exited" from="checkifplayernear" to="." method="_on_checkifplayernear_body_exited"]
