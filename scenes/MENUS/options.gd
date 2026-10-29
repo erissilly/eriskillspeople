@@ -46,6 +46,8 @@ func _on_backtomenu_pressed() -> void:
 	SceneTransition.start_scene("res://scenes/MENUS/main_menu.tscn")
 
 func _on_visibility_changed() -> void:
+	if not is_inside_tree():
+		return
 	var showing := is_visible_in_tree()
 	get_tree().paused = showing
 	if showing:

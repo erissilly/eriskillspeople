@@ -72,6 +72,7 @@ Proceed?"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=47015879]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8

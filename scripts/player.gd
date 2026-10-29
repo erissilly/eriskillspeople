@@ -11,6 +11,7 @@ class_name Player extends CharacterBody2D
 @onready var up: RayCast2D = $up
 @onready var down: RayCast2D = $down
 @onready var alive = true
+@onready var water: AudioStreamPlayer2D = $water
 
 
 var facing_left:= false
@@ -38,23 +39,23 @@ func tile_move():
 			if left.get_collider().is_in_group("enemy"):
 				facing_left = true
 				_on_attackarea_area_entered(left.get_collider())
-			if not (left.get_collider() is Obstacle):
+			if not (left.get_collider() is Obstacle or left.get_collider() is Water):
 				return
 		elif dirx == 1 && right.is_colliding():
 			if right.get_collider().is_in_group("enemy"):
 				facing_left = false
 				_on_attackarea_area_entered(right.get_collider())
-			if not (right.get_collider() is Obstacle):
+			if not (right.get_collider() is Obstacle or right.get_collider() is Water):
 				return
 		elif diry == -1 && up.is_colliding():
 			if up.get_collider().is_in_group("enemy"):
 				_on_attackarea_area_entered(up.get_collider())
-			if not (up.get_collider() is Obstacle):
+			if not (up.get_collider() is Obstacle or up.get_collider() is Water):
 				return
 		elif diry == 1 && down.is_colliding():
 			if down.get_collider().is_in_group("enemy"):
 				_on_attackarea_area_entered(down.get_collider())
-			if not (down.get_collider() is Obstacle):
+			if not (down.get_collider() is Obstacle or down.get_collider() is Water):
 				return
 			
 			
@@ -141,6 +142,23 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 			spr.play("dead_flip")
 		elif !facing_left:
 			spr.play("dead")
+		await get_tree().create_timer(2).timeout
+		Global.enemydead = 0
+		SceneTransition.change_scene_file()
+		Global.can_open_options = true
+	
+	elif area is Water:
+		Global.can_open_options = false
+		while state != State.IDLE:
+				await get_tree().physics_frame
+		state = State.DEAD
+		water.play()
+		camera.add_trauma(0.2)
+		music.stop()
+		if facing_left:
+			spr.play("drown_flip")
+		elif !facing_left:
+			spr.play("drown")
 		await get_tree().create_timer(2).timeout
 		Global.enemydead = 0
 		SceneTransition.change_scene_file()

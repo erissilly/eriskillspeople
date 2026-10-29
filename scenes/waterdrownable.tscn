@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cqtvudt38a6w3"]
+
+[ext_resource type="Script" uid="uid://bx0kqgq3baf7w" path="res://scripts/waterdrownable.gd" id="1_jvk4c"]
+[ext_resource type="Texture2D" uid="uid://bkl1k1806ho7l" path="res://icon.svg" id="2_ihifv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jb55"]
+size = Vector2(4, 2.5)
+
+[node name="waterdrownable" type="Area2D" unique_id=1708190912]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_jvk4c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=526892946]
+visible = false
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_ihifv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156661193]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_7jb55")

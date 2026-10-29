@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://biv0w06rc83tr" path="res://sounds/hit.wav" id="3_76oj4"]
 [ext_resource type="AudioStream" uid="uid://dqo1j7v8u4mme" path="res://sounds/dead.wav" id="3_atpat"]
 [ext_resource type="AudioStream" uid="uid://q1dpr8fulbc1" path="res://sounds/jump.wav" id="3_dyp2m"]
+[ext_resource type="AudioStream" uid="uid://dpeivdjbmebra" path="res://sounds/water.wav" id="6_kqtwu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rp718"]
 size = Vector2(9, 11)
@@ -72,6 +73,46 @@ region = Rect2(32, 32, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg40j"]
 atlas = ExtResource("1_rp718")
 region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdner"]
+atlas = ExtResource("1_rp718")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m38kj"]
+atlas = ExtResource("1_rp718")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1y1o"]
+atlas = ExtResource("1_rp718")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnvwh"]
+atlas = ExtResource("1_rp718")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfou0"]
+atlas = ExtResource("1_rp718")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xgtv"]
+atlas = ExtResource("1_rp718")
+region = Rect2(32, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rclf"]
+atlas = ExtResource("1_rp718")
+region = Rect2(48, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0anf"]
+atlas = ExtResource("1_rp718")
+region = Rect2(64, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1x7u"]
+atlas = ExtResource("1_rp718")
+region = Rect2(80, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3kfx"]
+atlas = ExtResource("1_rp718")
+region = Rect2(96, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yewv4"]
 atlas = ExtResource("1_rp718")
@@ -237,6 +278,46 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hdner")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m38kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1y1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnvwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfou0")
+}],
+"loop": 0,
+"name": &"drown",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xgtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rclf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0anf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1x7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3kfx")
+}],
+"loop": 0,
+"name": &"drown_flip",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yewv4")
 }, {
 "duration": 1.0,
@@ -322,7 +403,7 @@ shape = SubResource("RectangleShape2D_rp718")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1381193870]
 sprite_frames = SubResource("SpriteFrames_g4v7s")
-animation = &"dead_flip"
+animation = &"drown"
 autoplay = "idle"
 
 [node name="left" type="RayCast2D" parent="." unique_id=1731859241]
@@ -374,6 +455,11 @@ bus = &"SFX"
 
 [node name="hit" type="AudioStreamPlayer2D" parent="." unique_id=425848917]
 stream = ExtResource("3_76oj4")
+bus = &"SFX"
+
+[node name="water" type="AudioStreamPlayer2D" parent="." unique_id=735179309]
+stream = ExtResource("6_kqtwu")
+volume_db = 5.0
 bus = &"SFX"
 
 [connection signal="area_entered" from="attackarea" to="." method="_on_attackarea_area_entered"]

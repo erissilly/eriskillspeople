@@ -7,7 +7,9 @@ var enemydead = 0
 
 var player : Player
 var can_open_options := true
+var firsttimeplaying = true
 
 func reset_game():
 	level = 1
-	enemydead = 0 
+	enemydead = 0
+	firsttimeplaying = true
