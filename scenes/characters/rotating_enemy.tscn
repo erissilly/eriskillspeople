@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://derev185ac3r6"]
+
+[ext_resource type="Script" uid="uid://ci033nfqhd3s6" path="res://scripts/rotating_enemy.gd" id="1_f3akp"]
+[ext_resource type="Texture2D" uid="uid://c2pdkegt1yyrs" path="res://sprites/enemies-Sheet.png" id="2_rctv3"]
+[ext_resource type="AudioStream" uid="uid://q1dpr8fulbc1" path="res://sounds/jump.wav" id="3_4jm7u"]
+[ext_resource type="Texture2D" uid="uid://cyuwcpwrgvt5k" path="res://sprites/light.png" id="3_soqml"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f2e6v"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21x0f"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgk6k"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3k4es"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5khh"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0ik5"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc7n0"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpyvg"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjfok"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovt1e"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ag5d"]
+atlas = ExtResource("2_rctv3")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7jb55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f2e6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21x0f")
+}],
+"loop": 1,
+"name": &"1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgk6k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3k4es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5khh")
+}],
+"loop": 1,
+"name": &"1_scared",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0ik5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc7n0")
+}],
+"loop": 1,
+"name": &"2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpyvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjfok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovt1e")
+}],
+"loop": 1,
+"name": &"2_scared",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ag5d")
+}],
+"loop": 0,
+"name": &"dead",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soqml"]
+atlas = ExtResource("3_soqml")
+region = Rect2(18, 0, 18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1754t"]
+atlas = ExtResource("3_soqml")
+region = Rect2(0, 0, 18, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soqml")
+}],
+"loop": 0,
+"name": &"found",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1754t")
+}],
+"loop": 0,
+"name": &"looking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jb55"]
+size = Vector2(11, 10)
+
+[node name="rotatingenemy" type="Area2D" unique_id=1708190912 groups=["enemy"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_f3akp")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=715411632]
+sprite_frames = SubResource("SpriteFrames_7jb55")
+animation = &"dead"
+autoplay = "1"
+
+[node name="LOOK" type="Area2D" parent="AnimatedSprite2D" unique_id=190938822]
+position = Vector2(0, 16)
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="AnimatedSprite2D/LOOK" unique_id=973464432]
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"looking"
+autoplay = "looking"
+
+[node name="Look" type="CollisionShape2D" parent="AnimatedSprite2D/LOOK" unique_id=1409378707]
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.9525617, 0, 0.48236275, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1156661193]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_7jb55")
+
+[node name="checkifplayernear" type="Area2D" parent="." unique_id=1405365446]
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="checkifplayernear" unique_id=856395607]
+position = Vector2(0, 16)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.5818863, 0.54172844, 0, 0.41960785)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="checkifplayernear" unique_id=1608124891]
+position = Vector2(16, 0)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.5818863, 0.54172844, 0, 0.41960785)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="checkifplayernear" unique_id=1799876099]
+position = Vector2(0, -16)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.5818863, 0.54172844, 0, 0.41960785)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="checkifplayernear" unique_id=1760630960]
+position = Vector2(-16, 0)
+scale = Vector2(0.3, 0.3)
+shape = SubResource("RectangleShape2D_g4v7s")
+debug_color = Color(0.5818863, 0.54172844, 0, 0.41960785)
+
+[node name="squeek" type="AudioStreamPlayer2D" parent="." unique_id=385319188]
+stream = ExtResource("3_4jm7u")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="." unique_id=2082184215]
+autostart = true
+
+[connection signal="body_entered" from="AnimatedSprite2D/LOOK" to="." method="_on_look_body_entered"]
+[connection signal="body_entered" from="checkifplayernear" to="." method="_on_checkifplayernear_body_entered"]
+[connection signal="body_exited" from="checkifplayernear" to="." method="_on_checkifplayernear_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://c8hffyb2jftfj"]
+
+[ext_resource type="Script" uid="uid://cmuqnfbhtf8kw" path="res://scenes/MENUS/introreverse.gd" id="1_mswag"]
+[ext_resource type="Texture2D" uid="uid://dlsobh78dcel5" path="res://sprites/tent1.png" id="2_te3c7"]
+[ext_resource type="Texture2D" uid="uid://cjyn53ebvsr63" path="res://sprites/tent2.png" id="3_xodbg"]
+[ext_resource type="Texture2D" uid="uid://c3reoskems6xt" path="res://sprites/tent3.png" id="4_5kcu0"]
+[ext_resource type="Texture2D" uid="uid://cac3pbqslvlj7" path="res://sprites/tent4.png" id="5_tsqur"]
+[ext_resource type="PackedScene" uid="uid://brl0n1rv4w1q5" path="res://scenes/MENUS/dialogue_box.tscn" id="6_7dvg0"]
+[ext_resource type="AudioStream" uid="uid://ci3m0asbp7msi" path="res://sounds/buildup.wav" id="7_gu8d4"]
+[ext_resource type="AudioStream" uid="uid://jj5lpn3cg6ju" path="res://sounds/happy.wav" id="8_roxii"]
+
+[sub_resource type="Gradient" id="Gradient_7p85u"]
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xqjyw"]
+gradient = SubResource("Gradient_7p85u")
+fill = 1
+fill_from = Vector2(0.50869566, 0.5304348)
+
+[node name="Intro" type="Control" unique_id=598759731]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mswag")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1736531009]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="1" type="TextureRect" parent="." unique_id=204626465]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_te3c7")
+
+[node name="2" type="TextureRect" parent="." unique_id=898479967]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_xodbg")
+
+[node name="3" type="TextureRect" parent="." unique_id=2127576802]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_5kcu0")
+
+[node name="4" type="TextureRect" parent="." unique_id=610654572]
+visible = false
+layout_mode = 0
+offset_top = -18.0
+offset_right = 320.0
+offset_bottom = 162.0
+texture = ExtResource("5_tsqur")
+
+[node name="shadowthingy" type="TextureRect" parent="." unique_id=740218609]
+modulate = Color(1, 1, 1, 0.5411765)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_xqjyw")
+
+[node name="DialogueBox" parent="." unique_id=1335713866 instance=ExtResource("6_7dvg0")]
+d_file = "res://json/reverseintro.json"
+
+[node name="scary" type="AudioStreamPlayer" parent="." unique_id=1667401791]
+stream = ExtResource("7_gu8d4")
+volume_db = -8.0
+pitch_scale = 0.8
+bus = &"BGM"
+
+[node name="music" type="AudioStreamPlayer" parent="." unique_id=227723815]
+stream = ExtResource("8_roxii")
+volume_db = -15.0
+bus = &"BGM"

@@ -22,10 +22,6 @@ limit_right = 0
 limit_bottom = 0
 target = NodePath("../Player")
 
-[node name="Player" parent="." unique_id=985391588 instance=ExtResource("1_lq3ot")]
-position = Vector2(167, 85)
-metadata/_edit_group_ = true
-
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=302908616]
 stream = ExtResource("4_d6n3p")
 volume_db = -15.0
@@ -49,3 +45,6 @@ offset_left = 160.0
 offset_top = 90.0
 offset_right = 160.0
 offset_bottom = 90.0
+
+[node name="Player" parent="." unique_id=985391588 instance=ExtResource("1_lq3ot")]
+position = Vector2(152, 152)

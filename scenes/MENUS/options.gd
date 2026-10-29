@@ -43,6 +43,9 @@ func stupidoptionstartfix():
 func _on_backtomenu_pressed() -> void:
 	stupidoptionstartfix()
 	Global.enemydead = 0
+	if is_instance_valid(Global.current_room):
+		Global.current_room.queue_free()
+		Global.current_room = null
 	SceneTransition.start_scene("res://scenes/MENUS/main_menu.tscn")
 
 func _on_visibility_changed() -> void:

@@ -25,6 +25,7 @@ func _ready() -> void:
 	Global.player = self
 	for ray in [left,right,up,down]:
 		ray.add_exception($attackarea)
+	Global.connect("sawplayer",_on_saw_player)
 
 func tile_move():
 	if state == State.IDLE:
@@ -163,5 +164,22 @@ func _on_attackarea_area_entered(area: Area2D) -> void:
 		Global.enemydead = 0
 		SceneTransition.change_scene_file()
 		Global.can_open_options = true
+
 		
-	
+func _on_saw_player():
+	if state == State.IDLE or state == State.WALKING:
+		Global.can_open_options = false
+		while state != State.IDLE:
+			await get_tree().physics_frame
+		state = State.DEAD
+		dead.play()
+		camera.add_trauma(0.2)
+		music.stop()
+		if facing_left:
+			spr.play("dead_flip")
+		elif !facing_left:
+			spr.play("dead")
+		await get_tree().create_timer(2).timeout
+		Global.enemydead = 0
+		SceneTransition.change_scene_file()
+		Global.can_open_options = true
