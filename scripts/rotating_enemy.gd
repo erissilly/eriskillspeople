@@ -4,6 +4,7 @@ extends Enemy
 
 @onready var rotatespr: AnimatedSprite2D = $AnimatedSprite2D
 @onready var look: AnimatedSprite2D = $AnimatedSprite2D/LOOK/Sprite2D
+@onready var lookarea: Area2D = $AnimatedSprite2D/LOOK
 
 
 @onready var timer: Timer = $Timer
@@ -30,7 +31,8 @@ func _on_attacked(target: Enemy) -> void:
 		spr.play("dead")
 		await get_tree().physics_frame
 		rotatespr.rotation_degrees = 0
-		look.queue_free()
+		look.hide()
+		lookarea.set_deferred("monitoring", false)
 	super(target)
 
 
@@ -40,7 +42,3 @@ func _on_look_body_entered(body: Node2D) -> void:
 			look.play("found")
 			timer.stop()
 			Global.sawplayer.emit()
-		else:
-			look.play("looking")
-			look.hide()
-			return

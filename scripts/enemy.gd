@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func _on_attacked(target: Enemy) -> void:
 	if target == self && alive:
-		spr.play("dead")
+		spr.play("dead_" + str(indexnr))
 		await get_tree().create_timer(0.5).timeout
 		Global.enemydead += 1
 		alive = false
