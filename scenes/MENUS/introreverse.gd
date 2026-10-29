@@ -26,12 +26,14 @@ func _on_line_change(id):
 	_3.hide()
 	_4.hide()
 	if id == 0:
-		music.play()
+		scary.play()
 		_3.show()
 	elif id == 1:
 		_2.show()
 	elif id == 2:
 		_1.show()
 	elif id == 4:
+		scary.stop()
 		_4.show()
+		music.play()
 	else: return

@@ -13,7 +13,6 @@ class_name Player extends CharacterBody2D
 @onready var alive = true
 @onready var water: AudioStreamPlayer2D = $water
 
-
 var facing_left:= false
 
 enum State { IDLE, WALKING, ATTACKING, DEAD }
@@ -72,7 +71,7 @@ func tile_move():
 			jump.play()
 			var tween = create_tween()
 			spr.position.y -= 1
-			tween.tween_property(self,"position:x", dirgoto, 0.3)
+			tween.tween_property(self,"position:x", dirgoto, Global.DURATIONTOTILE)
 			await tween.finished
 			spr.position.y += 1
 			state = State.IDLE
@@ -89,7 +88,7 @@ func tile_move():
 			jump.play()
 			var tween = create_tween()
 			spr.position.y -= 1
-			tween.tween_property(self,"position:y", dirgoto, 0.3)
+			tween.tween_property(self,"position:y", dirgoto, Global.DURATIONTOTILE)
 			await tween.finished
 			spr.position.y += 1
 			state = State.IDLE

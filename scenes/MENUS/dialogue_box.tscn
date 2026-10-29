@@ -42,10 +42,16 @@ animations = [{
 script = ExtResource("1_gsv5k")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1887337816]
-offset_left = 70.0
-offset_top = 126.8
-offset_right = 250.0
-offset_bottom = 176.8
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -50.0
+offset_right = 90.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("1_hcw63")
 patch_margin_left = 5
 patch_margin_top = 5

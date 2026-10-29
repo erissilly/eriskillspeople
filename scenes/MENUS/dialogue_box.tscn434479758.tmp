@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://brl0n1rv4w1q5"]
+
+[ext_resource type="Script" uid="uid://cxiemsbn5s6lc" path="res://scripts/dialogue_box.gd" id="1_gsv5k"]
+[ext_resource type="Texture2D" uid="uid://ckl3xkvspaq0k" path="res://sprites/menu_texture.png" id="1_hcw63"]
+[ext_resource type="FontFile" uid="uid://cyyp800j12xdd" path="res://sprites/fonts/PIXEARG_.TTF" id="4_kedyt"]
+[ext_resource type="FontFile" uid="uid://byrc6whftjjiw" path="res://sprites/fonts/dogica.ttf" id="4_p0h3r"]
+[ext_resource type="Texture2D" uid="uid://c6d8rwwrpo80d" path="res://sprites/nose.png" id="5_kedyt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kedyt"]
+atlas = ExtResource("5_kedyt")
+region = Rect2(0, 0, 4, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi4ls"]
+atlas = ExtResource("5_kedyt")
+region = Rect2(8, 0, 4, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_857u0"]
+atlas = ExtResource("5_kedyt")
+region = Rect2(4, 0, 4, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g4v7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kedyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi4ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kedyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_857u0")
+}],
+"loop": 1,
+"name": &"nose",
+"speed": 5.0
+}]
+
+[node name="DialogueBox" type="CanvasLayer" unique_id=1335713866]
+script = ExtResource("1_gsv5k")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1887337816]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -50.0
+offset_right = 90.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_hcw63")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect" unique_id=2088771904]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.58
+offset_bottom = 3.5800018
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("4_p0h3r")
+theme_override_font_sizes/normal_font_size = 8
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect" unique_id=1855264935]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 11
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect/MarginContainer" unique_id=632746528]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/line_separation = 3
+theme_override_constants/paragraph_separation = 0
+theme_override_fonts/normal_font = ExtResource("4_kedyt")
+theme_override_font_sizes/normal_font_size = 8
+scroll_active = false
+autowrap_trim_flags = 0
+horizontal_alignment = 1
+
+[node name="nose" type="AnimatedSprite2D" parent="NinePatchRect" unique_id=534980507]
+position = Vector2(173, 44.199997)
+sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"nose"
+autoplay = "nose"
+frame_progress = 0.6279721
+
+[node name="Timer" type="Timer" parent="." unique_id=1125388901]
+wait_time = 0.4
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

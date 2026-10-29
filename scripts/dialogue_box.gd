@@ -10,7 +10,7 @@ signal line_started(id)
 @onready var timer: Timer = $Timer
 @export var char_delay := 0.05
 @onready var nose: AnimatedSprite2D = $NinePatchRect/nose
-
+@export var anchor: Control.LayoutPreset = Control.PRESET_CENTER_BOTTOM
 
 var startline_id := 0
 var dialogue = {}
@@ -20,6 +20,7 @@ var is_typing = false
 var pause_times := {",": 0.2, ".": 0.35, "!":0.3,	"?":0.3, " ": 0.06}
 
 func _ready() -> void:
+	nine_patch_rect.set_anchors_and_offsets_preset(anchor,  Control.PRESET_MODE_KEEP_SIZE)
 	nose.hide()
 	textlabel.visible_characters = 0
 	nine_patch_rect.hide()
