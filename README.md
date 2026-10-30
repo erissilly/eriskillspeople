@@ -4,7 +4,7 @@ A top-down tile puzzle game where you kill everyone in each room to clear it and
 
 ## Play
 
-[Download the latest release](https://github.com/erissilly/eriskillspeople)
+[Download the latest release](https://github.com/erissilly/eriskillspeople/releases/tag/v0.1.0)
 
 ## Installation
 
