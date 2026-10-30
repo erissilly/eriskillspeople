@@ -5,9 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://e8e18ph5xp5i" path="res://scenes/characters/enemy.tscn" id="2_0a7gw"]
 [ext_resource type="PackedScene" uid="uid://dmp8w5kw84vhh" path="res://scenes/obstacle.tscn" id="4_edval"]
 [ext_resource type="PackedScene" uid="uid://cqtvudt38a6w3" path="res://scenes/waterdrownable.tscn" id="5_dukxl"]
-[ext_resource type="PackedScene" uid="uid://derev185ac3r6" path="res://scenes/characters/rotating_enemy.tscn" id="6_f3j5p"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3600"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dukxl"]
 texture = ExtResource("1_a1jo5")
 0:1/0 = 0
 1:1/0 = 0
@@ -84,7 +83,7 @@ texture = ExtResource("1_a1jo5")
 [sub_resource type="TileSet" id="TileSet_pub68"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 2
-sources/0 = SubResource("TileSetAtlasSource_p3600")
+sources/0 = SubResource("TileSetAtlasSource_dukxl")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(32, 6)
@@ -149,8 +148,5 @@ position = Vector2(184, 104)
 
 [node name="waterdrownable" parent="." unique_id=1926858682 instance=ExtResource("5_dukxl")]
 position = Vector2(184, 121)
-
-[node name="rotatingenemy" parent="." unique_id=1825982295 instance=ExtResource("6_f3j5p")]
-position = Vector2(119, 56)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
