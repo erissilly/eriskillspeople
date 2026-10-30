@@ -1,10 +1,10 @@
-# eriskillspeople
+# eris kills people!
 
 A top-down tile puzzle game where you kill everyone in each room to clear it and move on.
 
 ## Play
 
-[Download the latest release](https://github.com/erissilly/eriskillspeople/releases/tag/v0.1.0)
+[Download the latest release](https://github.com/erissilly/eriskillspeople)
 
 ## Installation
 
