@@ -1,12 +1,14 @@
-# Project Name
+# eriskillspeople
 
-A top-down tile puzzle game where you have to kill people to clear each room and move on
+A top-down tile puzzle game where you kill everyone in each room to clear it and move on.
+
+## Play
+
+[Download the latest release](https://github.com/erissilly/eriskillspeople/releases/tag/v0.1.0)
 
 ## Installation
 
-1. Go to the Releases page and download the latest .zip.
+1. Go to the [Releases page](https://github.com/erissilly/eriskillspeople/releases/tag/v0.1.0) and download the .zip.
 2. Unzip it.
-3. Run eriskillspeople.exe
-
-
+3. Run `eriskillspeople.exe`.
 
